@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset="utf-8">
+    <meta name=“viewport” content=“width=device-width", initial-scale=1">
+    <title>Mystery Word</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <!-- <h1>Me too!</h1> -->
+    <header>
+      <h3 class="game_title">Mystery Word</h3>
+      <h3 class="counter">You have {{guessesLeft}} guesses left</h3>
+    </header>
+    <section>
+      <div class="all_letters_div">
+        {{#letters}}
+        <span class="letter">{{.}}</span>
+        {{/letters}}
+      </div>
+    </section>
+    <div class="errors">
+        {{#errors}}
+        <p>{{msg}}</p>
+        {{/errors}}
+        {{#duplicateError}}
+        <p>{{.}}</p>
+        {{/duplicateError}}
+    </div>
+    <div class="choose_letters_div">
+      <form class="choose_letters" action="" method="post">
+        <input type="text" name="user_input" placeholder="Pick a letter!" value="">
+        <input type="submit" name="" value="Guess!">
+      </form>
+    </div>
+    <div class="ending_msgs">
+      <form class="play_again" action="" method="get">
+        {{#message}}{{.}}<input type="submit" name="play_again" value="Play Again">{{/message}}
+      </form>
+    </div>
+    <div class="guessed_letters">
+      <h4>Guessed Letters</h4>
+      {{#guessedLetters}}
+      <span>{{.}}</span>
+      {{/guessedLetters}}
+      <div class="letters_container">
+      </div>
+    </div>
+  </body>
+</html>
