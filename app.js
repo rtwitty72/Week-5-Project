@@ -18,7 +18,7 @@ var users = [
 ];
 
 app.engine('mustache', mustacheExpress());
-app.set('views', './views');
+app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'mustache');
 
 app.use(bodyParser.json());
@@ -36,7 +36,7 @@ app.use(session({
 /**
 *Middleware to require user to be logged in
 *
-* Does a redirect to the **/
+* Does a redirect to the */
 app.use(function(req, res, next){
   var pathname = parseurl(req).pathname;
 
@@ -97,13 +97,10 @@ app.post('/login', (req, res) =>{
   if(req.session.user){
     res.redirect('/index'); //user will be sent to game screen if login is valid
   }else{
-    res.redirect('/login');
+    res.redirect('/login'); //will be sent to login
   }
 });
 
-app.get('/', (req, res)=>{
-  res.send('Works just fine');
-});
 
 app.get('/index', wordsController.renderIndex);
 

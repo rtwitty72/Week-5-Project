@@ -4,40 +4,46 @@
     <meta charset="utf-8">
     <meta name=“viewport” content=“width=device-width", initial-scale=1">
     <title>Mystery Word</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/main.css">
   </head>
   <body>
-    <!-- <h1>Me too!</h1> -->
     <header>
-      <h3 class="game_title">Mystery Word</h3>
-      <h3 class="counter">You have {{guessesLeft}} guesses left</h3>
+      <h3>Mystery Word</h3>
+      <h3>You have {{guessesLeft}} guesses left</h3>
     </header>
     <section>
-      <div class="all_letters_div">
-        {{#letters}}
-        <span class="letter">{{.}}</span>
-        {{/letters}}
-      </div>
-    </section>
+<div class="container">
+</div>
+    <div class="letters">
+      {{#letters}}
+        <span>{{.}}</span>
+      {{/letters}}
+    </div>
+  </section>
+
     <div class="errors">
         {{#errors}}
-        <p>{{msg}}</p>
+          <span>{{.}}</span>
         {{/errors}}
-        {{#duplicateError}}
-        <p>{{.}}</p>
-        {{/duplicateError}}
+
+        {{#duplicate}}
+          <span>{{.}}</span>
+        {{/duplicate}}
     </div>
-    <div class="choose_letters_div">
-      <form class="choose_letters" action="" method="post">
-        <input type="text" name="user_input" placeholder="Pick a letter!" value="">
-        <input type="submit" name="" value="Guess!">
-      </form>
-    </div>
+    <form class="" action="" method="post">
+      <input type="text" id="letter" name="letter" value="">
+      <input type="submit" name="" value="Guess Letter">
+    </form>
     <div class="ending_msgs">
-      <form class="play_again" action="" method="get">
-        {{#message}}{{.}}<input type="submit" name="play_again" value="Play Again">{{/message}}
-      </form>
-    </div>
+          <form class="play_again" action="" method="get">
+            {{#gameMsg}}{{.}}<input type="submit" name="play_again" value="Play Again">{{/gameMsg}}
+          </form>
+        </div>
+  </body>
+</html>
     <div class="guessed_letters">
       <h4>Guessed Letters</h4>
       {{#guessedLetters}}
@@ -46,5 +52,6 @@
       <div class="letters_container">
       </div>
     </div>
+  </div>
   </body>
 </html>
